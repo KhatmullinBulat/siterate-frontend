@@ -1,9 +1,10 @@
-import { HeaderSearch } from "@/features/HeaderSearch";
+import { HeaderSearch } from "@/features/layouts/HeaderSearch";
 import { AppShell, Burger, Button, Flex, Group, Image, Title } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
 import { Outlet } from "react-router";
 import { PlusIcon, UserIcon } from "@phosphor-icons/react"
 import logo from "@/shared/assets/images/logo.webp"
+import { Navbar } from "@/widgets/layouts/Navbar";
 
 export default function RootLayout() {
 
@@ -41,8 +42,11 @@ export default function RootLayout() {
                                 w={60}
                             />
 
-                            <Title order={1}>
-                                Рейтинг сайтов
+                            <Title
+                                order={1}
+                                size="h1"
+                            >
+                                Рейтинг
                             </Title>
                         </Flex>
                     </Group>
@@ -62,7 +66,7 @@ export default function RootLayout() {
             </AppShell.Header>
 
             <AppShell.Navbar p="md">
-                Navbar
+                <Navbar />
             </AppShell.Navbar>
 
             <AppShell.Main>
