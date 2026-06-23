@@ -1,6 +1,8 @@
 import { HomePage } from "@/pages/Home";
+import { LoginPage } from "@/pages/Login";
 import { NotFoundPage } from "@/pages/NotFound";
-import RootLayout from "@/shared/layouts/RootLayout";
+import { RegisterPage } from "@/pages/Register";
+import RootLayout from "@/layouts/RootLayout";
 import { createBrowserRouter } from "react-router";
 
 export const router = createBrowserRouter([
@@ -15,6 +17,19 @@ export const router = createBrowserRouter([
             {
                 path: "*",
                 Component: NotFoundPage
+            }
+        ],
+    },
+    {
+        path: "/auth",
+        children: [
+            {
+                path: "login",
+                Component: LoginPage,
+            },
+            {
+                path: "register",
+                Component: RegisterPage,
             }
         ]
     }

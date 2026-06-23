@@ -3,6 +3,7 @@ import './App.css'
 import '@mantine/core/styles.css'
 import { router } from '@/app/router/router'
 import { createTheme, MantineProvider } from '@mantine/core'
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 
 function App() {
 
@@ -10,9 +11,13 @@ function App() {
     primaryColor: "indigo"
   })
 
+  const queryClient = new QueryClient()
+
   return (
     <MantineProvider theme={theme}>
-      <RouterProvider router={router} />
+      <QueryClientProvider client={queryClient}>
+        <RouterProvider router={router} />
+      </QueryClientProvider>
     </MantineProvider>
   )
 }

@@ -1,10 +1,10 @@
 import { HeaderSearch } from "@/features/layouts/HeaderSearch";
-import { AppShell, Burger, Button, Flex, Group, Image, Title } from "@mantine/core";
+import { AppShell, Burger, Button, Group } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
-import { Outlet } from "react-router";
+import { Link, Outlet } from "react-router";
 import { PlusIcon, UserIcon } from "@phosphor-icons/react"
-import logo from "@/shared/assets/images/logo.webp"
 import { Navbar } from "@/widgets/layouts/Navbar";
+import { Logo } from "@/shared/ui/Logo";
 
 export default function RootLayout() {
 
@@ -35,30 +35,26 @@ export default function RootLayout() {
                             size="sm"
                         />
 
-                        <Flex align="center">
-                            <Image
-                                src={logo}
-                                h={60}
-                                w={60}
-                            />
-
-                            <Title
-                                order={1}
-                                size="h1"
-                            >
-                                Рейтинг
-                            </Title>
-                        </Flex>
+                        <Logo />
                     </Group>
 
                     <HeaderSearch />
 
                     <Group>
-                        <Button size="md" leftSection={<PlusIcon size={22} />}>
+                        <Button
+                            size="md"
+                            leftSection={<PlusIcon size={22} />}
+                        >
                             Оценить сайт
                         </Button>
 
-                        <Button variant="subtle" size="md" leftSection={<UserIcon size={22} />}>
+                        <Button
+                            variant="subtle"
+                            size="md"
+                            leftSection={<UserIcon size={22} />}
+                            component={Link}
+                            to="/auth/login"
+                        >
                             Войти
                         </Button>
                     </Group>

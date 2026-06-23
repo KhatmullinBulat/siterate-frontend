@@ -1,6 +1,4 @@
-import type { JSX } from "react/jsx-runtime";
-
-export function HomePage(): JSX.Element {
+export function HomePage() {
     return (
         <section></section>
     )
