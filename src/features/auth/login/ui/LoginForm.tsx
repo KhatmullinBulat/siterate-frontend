@@ -1,11 +1,11 @@
 
 import { useLogin } from "@/entities/auth";
-import { Button, Checkbox, Group, PasswordInput, TextInput } from "@mantine/core";
+import { Button, Checkbox, Flex, Group, PasswordInput, Text, TextInput, Title } from "@mantine/core";
 import { hasLength, isEmail, useForm } from "@mantine/form";
+import { Link } from "react-router";
 
 export function LoginForm() {
     const loginMutation = useLogin()
-
     const form = useForm({
         mode: "uncontrolled",
 
@@ -24,41 +24,90 @@ export function LoginForm() {
         <form
             onSubmit={form.onSubmit((values) => loginMutation.mutate(values))}
         >
-            <TextInput
-                withAsterisk
-                label="Email"
-                placeholder="your@email.com"
-                key={form.key('email')}
-                {...form.getInputProps('email')}
-            />
-
-            <PasswordInput
-                withAsterisk
-                label="Пароль"
-                placeholder="Введите ваш пароль"
-                key={form.key('password')}
-                {...form.getInputProps('password')}
-            />
-
-            <Group
-                wrap="nowrap"
+            <Flex
+                direction="column"
+                gap="xl"
             >
-                <Checkbox
-                    label="Запомнить меня"
-                />
+                <Flex
+                    direction="column"
+                    gap={10}
+                >
+                    <Title>
+                        Вход в аккаунт
+                    </Title>
+
+                    <Text>
+                        Добро пожаловать обратно! 👋
+                    </Text>
+                </Flex>
+
+                <Flex
+                    direction="column"
+                    gap="md"
+                >
+                    <TextInput
+                        size="md"
+                        withAsterisk
+                        label="Email"
+                        placeholder="your@email.com"
+                        key={form.key('email')}
+                        {...form.getInputProps('email')}
+                    />
+
+                    <PasswordInput
+                        size="md"
+                        withAsterisk
+                        label="Пароль"
+                        placeholder="Введите ваш пароль"
+                        key={form.key('password')}
+                        {...form.getInputProps('password')}
+                    />
+
+                    <Group
+                        wrap="nowrap"
+                        justify="space-between"
+                    >
+                        <Checkbox
+                            label="Запомнить меня"
+                        />
+
+                        <Button
+                            variant="transparent"
+                            p={0}
+                        >
+                            Забыли пароль?
+                        </Button>
+                    </Group>
+                </Flex>
 
                 <Button
-                    variant="transparent"
+                    type="submit"
+                    size="md"
+                    fullWidth
                 >
-                    Забыли пароль?
+                    Войти
                 </Button>
-            </Group>
 
-            <Button
-                type="submit"
-            >
-                Войти
-            </Button>
+                <Group
+                    wrap="nowrap"
+                    justify="space-between"
+                >
+                    <Text
+                        c="dimmed"
+                    >
+                        Ещё нет аккаунта?
+                    </Text>
+
+                    <Button
+                        variant="transparent"
+                        p={0}
+                        component={Link}
+                        to="/auth/register"
+                    >
+                        Зарегистрироваться
+                    </Button>
+                </Group>
+            </Flex>
         </form>
     )
 }

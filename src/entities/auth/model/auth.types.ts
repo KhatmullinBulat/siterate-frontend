@@ -5,17 +5,19 @@ export interface LoginCredentials {
     password: string
 }
 
-const userSchema = z.object({
-    id: z.number(),
-    username: z.string(),
-    email: z.email(),
-    role: z.string()
-})
+export interface RegisterCredentials {
+    username: string
+    email: string
+    password: string
+}
 
 export const loginSchema = z.object({
     accessToken: z.string(),
-    user: userSchema,
 })
 
-export type User = z.infer<typeof userSchema>
+export const registerSchema = z.object({
+    accessToken: z.string(),
+})
+
 export type LoginResponse = z.infer<typeof loginSchema>
+export type RegisterResponse = z.infer<typeof registerSchema>

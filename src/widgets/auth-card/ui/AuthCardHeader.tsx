@@ -1,8 +1,10 @@
 import { Logo } from "@/shared/ui/Logo";
 import { Button, Flex, Group, Text } from "@mantine/core";
-import { Link } from "react-router";
+import { Link, useLocation } from "react-router";
 
 export function AuthCardHeader() {
+    const location = useLocation()
+
     return (
         <Flex
             justify="space-between"
@@ -11,20 +13,23 @@ export function AuthCardHeader() {
         >
             <Logo />
 
-            <Group>
-                <Text>
-                    Уже есть аккаунт?
-                </Text>
+            {
+                location.pathname !== '/auth/login' &&
+                <Group>
+                    <Text>
+                        Уже есть аккаунт?
+                    </Text>
 
-                <Button
-                    variant="subtle"
-                    size="md"
-                    component={Link}
-                    to="/auth/login"
-                >
-                    Войти
-                </Button>
-            </Group>
+                    <Button
+                        variant="subtle"
+                        size="md"
+                        component={Link}
+                        to="/auth/login"
+                    >
+                        Войти
+                    </Button>
+                </Group>
+            }
         </Flex>
     )
 }

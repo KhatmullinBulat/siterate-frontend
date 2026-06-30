@@ -13,7 +13,9 @@ export function HeaderSearch() {
 
     return (
         <form onSubmit={form.onSubmit((values) => console.log(values))}>
-            <Flex>
+            <Flex
+                justify="center"
+            >
                 <Input
                     size="md"
                     inputSize="50"

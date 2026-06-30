@@ -1,28 +1,53 @@
 import { Flex, List, Text, Title } from "@mantine/core";
+import classes from "../css/AuthCard.module.css"
+import { LightningIcon, ShieldCheckIcon, UsersIcon } from "@phosphor-icons/react";
 
 export function AuthCardAside() {
     return (
         <Flex
+            className={classes.card__aside}
             direction="column"
+            gap="xl"
+            maw={420}
         >
-            <Title
-                order={1}
+            <Flex
+                direction="column"
+                gap={4}
             >
-                Оценивайте сайты.
-                <br />
-                Делитесь мнением.
-                <br />
-                Помогайте другим.
-            </Title>
+                <Title
+                    order={2}
+                >
+                    Оценивайте сайты.
+                </Title>
+
+                <Title
+                    order={2}
+                >
+                    Делитесь мнением.
+                </Title>
+
+                <Title
+                    order={2}
+                >
+                    Помогайте другим.
+                </Title>
+            </Flex>
 
             <Text>
                 Присоединяйтесь к сообществу и находите лучшие сайты в интернете.
             </Text>
 
-            <List>
-                <List.Item>
+            <List
+                ps={0}
+            >
+                <List.Item
+                    icon={
+                        <UsersIcon size={32} />
+                    }
+                    mb={20}
+                >
                     <Title
-                        order={2}
+                        order={3}
                     >
                         Честные отзывы
                     </Title>
@@ -31,9 +56,14 @@ export function AuthCardAside() {
                     </Text>
                 </List.Item>
 
-                <List.Item>
+                <List.Item
+                    icon={
+                        <ShieldCheckIcon size={32} />
+                    }
+                    mb={20}
+                >
                     <Title
-                        order={2}
+                        order={3}
                     >
                         Объективные оценки
                     </Title>
@@ -42,9 +72,14 @@ export function AuthCardAside() {
                     </Text>
                 </List.Item>
 
-                <List.Item>
+                <List.Item
+                    icon={
+                        <LightningIcon size={32} />
+                    }
+                    mb={20}
+                >
                     <Title
-                        order={2}
+                        order={3}
                     >
                         Лучшие сайты
                     </Title>

@@ -5,10 +5,13 @@ import { Link, Outlet } from "react-router";
 import { PlusIcon, UserIcon } from "@phosphor-icons/react"
 import { Navbar } from "@/widgets/layouts/Navbar";
 import { Logo } from "@/shared/ui/Logo";
+import { useUser } from "@/entities/user/lib/useUser";
 
 export default function RootLayout() {
 
     const [opened, { toggle }] = useDisclosure()
+
+    const { data: user } = useUser()
 
     return (
         <AppShell
@@ -48,15 +51,26 @@ export default function RootLayout() {
                             Оценить сайт
                         </Button>
 
-                        <Button
-                            variant="subtle"
-                            size="md"
-                            leftSection={<UserIcon size={22} />}
-                            component={Link}
-                            to="/auth/login"
-                        >
-                            Войти
-                        </Button>
+                        {
+                            user ?
+                                <Button
+                                    variant="subtle"
+                                    size="lg"
+                                    leftSection={<UserIcon size={22} />}
+                                >
+                                    {user.username}
+                                </Button>
+                                :
+                                <Button
+                                    variant="subtle"
+                                    size="md"
+                                    leftSection={<UserIcon size={22} />}
+                                    component={Link}
+                                    to="/auth/login"
+                                >
+                                    Войти
+                                </Button>
+                        }
                     </Group>
                 </Group>
             </AppShell.Header>

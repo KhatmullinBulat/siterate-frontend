@@ -3,7 +3,9 @@ import { Link } from "react-router";
 
 export function AuthCardFooter() {
     return (
-        <Group>
+        <Group
+            py={20}
+        >
             <Text>
                 © 2026 SiteRate
             </Text>

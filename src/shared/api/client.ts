@@ -14,7 +14,7 @@ export async function apiFetch<T>(
 
     const token = getAccessToken()
     if (token) {
-        headers.set("Authorization", `Bearear ${token}`)
+        headers.set("Authorization", `Bearer ${token}`)
     }
 
     const response = await fetch(`${env.apiUrl}${endpoint}`, {

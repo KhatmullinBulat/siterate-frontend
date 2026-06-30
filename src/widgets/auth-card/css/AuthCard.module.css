@@ -2,3 +2,12 @@
     width: 100%;
     max-width: 800px;
 }
+
+.card__aside {
+    background: #F0F0FE;
+    background: linear-gradient(90deg, rgba(240, 240, 254, 1) 0%, rgba(248, 249, 254, 1) 100%);
+
+    border-radius: 10px;
+
+    padding: 40px 30px;
+}

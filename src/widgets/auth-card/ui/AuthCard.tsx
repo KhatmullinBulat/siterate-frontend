@@ -16,6 +16,7 @@ export function AuthCard({ children }: Props) {
 
             <Group
                 wrap="nowrap"
+                justify="space-between"
             >
                 <AuthCardAside />
 
